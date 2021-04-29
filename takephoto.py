@@ -14,7 +14,10 @@ try:
     	button_state = GPIO.input(23)
     	if button_state == False:
     		GPIO.output(24, True)
-    		print('Button Pressed...')
+    		camera.start_preview()
+    		sleep(5)
+    		camera.capture('/home/pi/Desktop/image1.jpg')
+    		camera.stop_preview()
     		time.sleep(0.2)
 except:
 	GPIO.cleanup()
