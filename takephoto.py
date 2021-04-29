@@ -28,10 +28,8 @@ try:
             camera.capture('/home/pi/Desktop/image1.jpg')
             camera.stop_preview()
         else:
-            
-
+        	
         wiringpi.delay(20)
-
 except KeyboardInterrupt:
     clear_all()
 
