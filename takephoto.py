@@ -18,5 +18,7 @@ try:
     		camera.capture('/home/pi/Desktop/image1.jpg')
     		camera.stop_preview()
     		time.sleep(0.2)
+    	else:
+    		print "Hello, World!"
 except:
 	GPIO.cleanup()
