@@ -13,12 +13,13 @@ try:
     while True:
     	button_state = GPIO.input(23)
     	if button_state == False:
+    		print "Hello, World!"
+    		
+    	else:
     		camera.start_preview()
     		sleep(5)
     		camera.capture('/home/pi/Desktop/image1.jpg')
     		camera.stop_preview()
     		time.sleep(0.2)
-    	else:
-    		print "Hello, World!"
 except:
 	GPIO.cleanup()
