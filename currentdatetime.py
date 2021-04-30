@@ -1,6 +1,6 @@
 import datetime
 from time import sleep
-from dateutil.parser import parser
+from dateutil.parser import parse
 
 
 while True:
