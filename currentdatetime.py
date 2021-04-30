@@ -6,7 +6,7 @@ from dateutil.parser import parser
 
 
 while True:
-	t = datetime.datetime.now()
+	t = datetime.now()
 	t_secs = parse(t).timestamp()
 	print ("Current date & time = %s" % t_secs)
 	sleep(5)
