@@ -10,16 +10,13 @@ import datetime
 
 
 
-#camera = PiCamera()
+camera = PiCamera()
 
 try:
     while True:
     	button_state = GPIO.input(23)
-    	# if button_state == True:
-    	if button_state == False:
+    	if button_state == True:
     		print "Closed!"
-    		i = datetime.datetime.now()
-    		print ("Current date & time = %s" % i)
     		# camera.start_preview()
     		# sleep(5)
     		# camera.capture('/home/pi/Desktop/image1.jpg')
