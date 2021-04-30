@@ -1,12 +1,12 @@
 import datetime
 from time import sleep
 from datetime import datetime
-#from iso8601 import parse_date
 from dateutil.parser import parser
 
 
 while True:
-	t = datetime.now()
-	t_secs = parse(t).timestamp()
+	t = datetime.datetime.now()
+	t_iso = t.isoformat()
+	t_secs = parse(t_iso).timestamp()
 	print ("Current date & time = %s" % t_secs)
 	sleep(5)
