@@ -10,7 +10,7 @@ import datetime
 
 
 
-camera = PiCamera()
+#camera = PiCamera()
 
 try:
     while True:
