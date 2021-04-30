@@ -11,4 +11,4 @@ try:
 		print ("Current date & time = %s" % t_secs)
 		sleep(5)
 except:
-	
+	print ("Finish")
