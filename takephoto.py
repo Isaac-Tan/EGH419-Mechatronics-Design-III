@@ -32,7 +32,7 @@ try:
     		camera.start_preview()
     		sleep(1)
     		filename = timestamp()
-    		camera.capture('/home/pi/Photos/%s.jpg' filename)
+    		camera.capture('/home/pi/Photos/%s.jpg', filename)
     		camera.stop_preview()
     		time.sleep(0.2)
     		GPIO.output(24, 1)
