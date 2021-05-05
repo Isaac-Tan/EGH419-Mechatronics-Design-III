@@ -8,7 +8,7 @@ from dateutil.parser import parse as dp
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)#Button1 to GPIO23
 GPIO.setup(24, GPIO.OUT)#LED to GPIO24
-GPIO.setup(25, GPIO.OUT)#LED to GPIO24
+GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 
 import datetime
@@ -29,13 +29,14 @@ try:
     	button1_state = GPIO.input(23)
     	if button1_state == True:
     		print "Closed!"
-    		# camera.start_preview()
-    		# sleep(1)
-    		# filename = timestamp()
-    		# camera.capture('/home/pi/Photos/%s.jpg' filename)
-    		# camera.stop_preview()
-    		# time.sleep(0.2)
+    		camera.start_preview()
+    		sleep(1)
+    		filename = timestamp()
+    		camera.capture('/home/pi/Photos/%s.jpg' filename)
+    		camera.stop_preview()
+    		time.sleep(0.2)
     		GPIO.output(24, 1)
+    		sleep(5)
     	else:
     		print "Open!"
     		GPIO.output(24,0)
