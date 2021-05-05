@@ -33,10 +33,11 @@ try:
     		sleep(1)
     		filename = timestamp()
     		camera.capture('/home/pi/Photos/%s.jpg', filename)
-    		camera.stop_preview()
-    		time.sleep(0.2)
+    		
     		GPIO.output(24, 1)
     		sleep(5)
+    		camera.stop_preview()
+    		time.sleep(0.2)
     	else:
     		print "Open!"
     		GPIO.output(24,0)
