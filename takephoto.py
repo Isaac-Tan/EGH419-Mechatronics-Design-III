@@ -7,14 +7,14 @@ from dateutil.parser import parse as dp
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)#Button1 to GPIO23
-GPIO.setup(16, GPIO.OUT)#LED to GPIO24
+GPIO.setup(16, GPIO.OUT)#LED to GPIO16
 GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 
 import datetime
 sessionActive = False
 camera = PiCamera()
-GPIO.output(24,1)
+GPIO.output(16,1)
 
 def timestamp():
 	t = datetime.datetime.now()
@@ -35,7 +35,7 @@ def startsession():
 	extension = ".jpg"
 	camera.capture('/home/pi/Photos/Before/' + filename + extension)
 	print "Image taken."
-	GPIO.output(24, 0)
+	GPIO.output(16, 0)
 	sleep(5)
 
 def endsession():
@@ -48,7 +48,7 @@ def endsession():
 	camera.capture('/home/pi/Photos/After/' + filename + extension)
 	print "Image taken."
 	sessionActive = False
-	GPIO.output(24, 1)
+	GPIO.output(16, 1)
 	sleep(5)
 
 
