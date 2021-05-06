@@ -40,6 +40,7 @@ def startsession():
 
 def endsession():
 	print "Ending Session!"
+	sessionActive = False
 	sleep(1)
 	print "Please return the equipment to the locker and close the door."
 	endtime = timestamp()
@@ -47,7 +48,6 @@ def endsession():
 	extension = ".jpg"
 	camera.capture('/home/pi/Photos/After/' + filename + extension)
 	print "Image taken."
-	sessionActive = False
 	GPIO.output(16, 1)
 	sleep(5)
 
