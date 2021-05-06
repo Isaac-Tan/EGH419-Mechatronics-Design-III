@@ -7,7 +7,7 @@ from dateutil.parser import parse as dp
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(23, GPIO.IN)#Button1 to GPIO23
-GPIO.setup(24, GPIO.OUT)#LED to GPIO24
+GPIO.setup(16, GPIO.OUT)#LED to GPIO24
 GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 
