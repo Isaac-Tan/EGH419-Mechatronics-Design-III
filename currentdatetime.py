@@ -11,5 +11,5 @@ def timestamp():
 	return t_secs
 
 while True:
-	filename = timestamp()
-	print(f"This is the filename: {filename}")
+	filename = str(timestamp())
+	print("The filename is: %s", filename)
