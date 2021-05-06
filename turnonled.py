@@ -9,5 +9,7 @@ GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 while True:
 	GPIO.output(24,1)
+	sleep(1)
+	GPIO.output(24,0)
 
 GPIO.cleanup()
