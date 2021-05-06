@@ -34,17 +34,20 @@ def startsession():
 	filename = str(starttime)
 	extension = ".jpg"
 	camera.capture('/home/pi/Photos/Before/' + filename + extension)
+	print "Image taken."
 	GPIO.output(24, 0)
 	sleep(5)
 
 def endsession():
 	print "Ending Session!"
-	sessionActive = False
 	sleep(1)
+	print "Please return the equipment to the locker and close the door."
 	endtime = timestamp()
 	filename = str(endtime)
 	extension = ".jpg"
 	camera.capture('/home/pi/Photos/After/' + filename + extension)
+	print "Image taken."
+	sessionActive = False
 	GPIO.output(24, 1)
 	sleep(5)
 
