@@ -13,6 +13,8 @@ GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 import datetime
 sessionActive = False
+camera = PiCamera()
+GPIO.output(24,1)
 
 def timestamp():
 	t = datetime.datetime.now()
@@ -24,35 +26,38 @@ def timestamp():
 # def end():
 # 	sessiontime = starttime - endtime
 
+def startsession():
+	print "Starting Session!"
+	sessionActive = True
+	sleep(1)
+	starttime = timestamp()
+	filename = str(starttime)
+	extension = ".jpg"
+	camera.capture('/home/pi/Photos/Before/' + filename + extension)
+	GPIO.output(24, 0)
+	sleep(5)
 
-camera = PiCamera()
-GPIO.output(24,1)
+def endsession():
+	print "Ending Session!"
+	sessionActive = False
+	sleep(1)
+	endtime = timestamp()
+	filename = str(endtime)
+	extension = ".jpg"
+	camera.capture('/home/pi/Photos/After/' + filename + extension)
+	GPIO.output(24, 1)
+	sleep(5)
+
 
 
 while True:
 	button1_state = GPIO.input(23)
 	if button1_state == True and sessionActive == False:
-		print "Starting Session!"
-		sessionActive = True
-		sleep(1)
-		starttime = timestamp()
-		filename = str(starttime)
-		extension = ".jpg"
-		camera.capture('/home/pi/Photos/Before/' + filename + extension)
-		GPIO.output(24, 0)
-		sleep(5)
+		startsession()
 	else:
 		print "-"
 	button2_state = GPIO.input(25)
 	if button2_state == True:
-		print "Ending Session!"
-		sessionActive = False
-		sleep(1)
-		endtime = timestamp()
-		filename = str(endtime)
-		extension = ".jpg"
-		camera.capture('/home/pi/Photos/After/' + filename + extension)
-		GPIO.output(24, 1)
-		sleep(5)
+		endsession()
 	else:
-		print "=x"
+		print "--"
