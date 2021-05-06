@@ -57,10 +57,6 @@ while True:
 	button1_state = GPIO.input(23)
 	if button1_state == True and sessionActive == False:
 		startsession()
-	else:
-		print "-"
 	button2_state = GPIO.input(25)
 	if button2_state == True and sessionActive == True:
 		endsession()
-	else:
-		print "--"
