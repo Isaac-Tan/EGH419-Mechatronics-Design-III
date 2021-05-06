@@ -34,26 +34,25 @@ GPIO.output(24,1)
 while True:
 	button1_state = GPIO.input(23)
 	if button1_state == True:
-		print "Closed!"
+		print "Starting Session!"
 		sleep(1)
 		starttime = timestamp()
 		filename = str(starttime)
 		extension = ".jpg"
-		os.mkdir(filename)
 		camera.capture('/home/pi/Photos/Before/' + filename + extension)
 		GPIO.output(24, 0)
 		sleep(5)
 	else:
-		print "Open!"
+		print "-"
 	button2_state = GPIO.input(25)
 	if button2_state == True:
-		print "Closed!"
+		print "Ending Session!"
 		sleep(1)
 		endtime = timestamp()
 		filename = str(endtime)
 		extension = ".jpg"
-		camera.capture('/home/pi/Photos/After/'+ filename + extension)
+		camera.capture('/home/pi/Photos/After/' + filename + extension)
 		GPIO.output(24, 1)
 		sleep(5)
 	else:
-		print "Open!"
+		print "="
