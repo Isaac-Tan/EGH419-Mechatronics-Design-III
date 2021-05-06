@@ -18,7 +18,6 @@ def timestamp():
 	t_iso = t.isoformat()
 	t_parsed = dp(t_iso)
 	t_secs = t_parsed.strftime('%s')
-	print (t_secs)
 	return t_secs
 
 
