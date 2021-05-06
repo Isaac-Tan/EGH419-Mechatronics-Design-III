@@ -38,7 +38,7 @@ while True:
 		GPIO.output(24, 1)
 		sleep(5)
 		camera.stop_preview()
-		time.sleep(0.2)
+		sleep(0.2)
 	else:
 		print "Open!"
 		GPIO.output(24,0)
