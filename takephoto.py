@@ -55,12 +55,12 @@ def endsession():
 
 while True:
 	button1_state = GPIO.input(23)
-	if button1_state == True and sessionActive == False:
+	if button1_state == True:
 		startsession()
 	else:
 		print ""
 	button2_state = GPIO.input(25)
-	if button2_state == True and sessionActive == True:
+	if button2_state == True:
 		endsession()
 	else:
 		print ""
