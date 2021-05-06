@@ -43,6 +43,7 @@ def endsession():
 	sessionActive = False
 	sleep(1)
 	print "Please return the equipment to the locker and close the door."
+	sleep(3)
 	endtime = timestamp()
 	filename = str(endtime)
 	extension = ".jpg"
