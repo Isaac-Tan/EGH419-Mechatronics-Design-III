@@ -12,4 +12,4 @@ def timestamp():
 
 while True:
 	filename = str(timestamp())
-	print("The filename is: %s", filename)
+	print("The filename is: " + filename)
