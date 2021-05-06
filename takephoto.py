@@ -13,8 +13,8 @@ GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 import datetime
 
-int starttime
-int endtime
+# int starttime = 0
+# int endtime = 0
 
 def timestamp():
 	t = datetime.datetime.now()
@@ -23,8 +23,8 @@ def timestamp():
 	t_secs = t_parsed.strftime('%s')
 	return t_secs
 
-def end():
-	sessiontime = starttime - endtime
+# def end():
+# 	sessiontime = starttime - endtime
 
 
 camera = PiCamera()
