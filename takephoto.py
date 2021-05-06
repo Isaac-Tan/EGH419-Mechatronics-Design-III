@@ -13,12 +13,18 @@ GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 import datetime
 
+int starttime
+int endtime
+
 def timestamp():
 	t = datetime.datetime.now()
 	t_iso = t.isoformat()
 	t_parsed = dp(t_iso)
 	t_secs = t_parsed.strftime('%s')
 	return t_secs
+
+def end():
+	sessiontime = starttime - endtime
 
 
 camera = PiCamera()
@@ -30,9 +36,11 @@ while True:
 	if button1_state == True:
 		print "Closed!"
 		sleep(1)
-		filename = str(timestamp())
+		starttime = timestamp()
+		filename = str(starttime)
 		extension = ".jpg"
-		camera.capture('/home/pi/Photos/before '+ filename + extension)
+		os.mkdir(filename)
+		camera.capture('/home/pi/Photos/'+ filename +'/' + filename + extension)
 		GPIO.output(24, 0)
 		sleep(5)
 	else:
@@ -41,9 +49,10 @@ while True:
 	if button2_state == True:
 		print "Closed!"
 		sleep(1)
-		filename = str(timestamp())
+		endtime = timestamp()
+		filename = str(endtime)
 		extension = ".jpg"
-		camera.capture('/home/pi/Photos/after '+ filename + extension)
+		camera.capture('/home/pi/Photos/After/'+ filename + extension)
 		GPIO.output(24, 1)
 		sleep(5)
 	else:
