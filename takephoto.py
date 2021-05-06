@@ -40,7 +40,7 @@ while True:
 		filename = str(starttime)
 		extension = ".jpg"
 		os.mkdir(filename)
-		camera.capture('/home/pi/Photos/'+ filename +'/' + filename + extension)
+		camera.capture('/home/pi/Photos/Before/' + filename + extension)
 		GPIO.output(24, 0)
 		sleep(5)
 	else:
