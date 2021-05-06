@@ -12,8 +12,7 @@ GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 
 import datetime
-
-bool sessionActive = False
+sessionActive = False
 
 def timestamp():
 	t = datetime.datetime.now()
