@@ -31,8 +31,9 @@ try:
     		print "Closed!"
     		camera.start_preview()
     		sleep(1)
-    		filename = timestamp()
-    		camera.capture('/home/pi/Photos/%s.jpg', filename)
+    		filename = str(timestamp())
+    		extension = ".jpg"
+    		camera.capture('/home/pi/Photos/'+ filename + extension)
     		
     		GPIO.output(24, 1)
     		sleep(5)
