@@ -60,7 +60,7 @@ while True:
 	else:
 		print "-"
 	button2_state = GPIO.input(25)
-	if button2_state == True:
+	if button2_state == True and sessionActive == True:
 		endsession()
 	else:
 		print "--"
