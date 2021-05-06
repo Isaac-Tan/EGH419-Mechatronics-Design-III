@@ -23,6 +23,7 @@ def timestamp():
 
 
 camera = PiCamera()
+GPIO.output(24,0)
 
 
 while True:
