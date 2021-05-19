@@ -4,7 +4,6 @@ from dateutil.parser import parse as dp
 
 
 import datetime
-sessionActive = False
 camera = PiCamera()
 
 def timestamp():
@@ -14,17 +13,17 @@ def timestamp():
 	t_secs = t_parsed.strftime('%s')
 	return t_secs
 
-def takephoto(case):
+def takephoto(cond):
 	extension = ".jpg"
-	if (case == "pre"):
+	if (cond == "pre"):
 		starttime = timestamp()
 		filename = str(starttime)
 		camera.capture('/home/pi/Photos/Before/' + filename + extension)
-	else if (case == "post"):
+	else if (cond == "post"):
 		endtime = timestamp()
 		filename = str(endtime)
 		camera.capture('/home/pi/Photos/After/' + filename + extension)
-	if (case == "pre" or case == "post"):
+	if (cond == "pre" or cond == "post"):
 		print "Image taken."
 
 
