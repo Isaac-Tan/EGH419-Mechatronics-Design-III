@@ -13,37 +13,10 @@ def timestamp():
 	t_secs = t_parsed.strftime('%s')
 	return t_secs
 
-def takephoto(cond):
+def takephoto():
 	extension = ".jpg"
-	if (cond == "pre"):
-		starttime = timestamp()
-		filename = str(starttime)
-		camera.capture('/home/pi/Photos/Before/' + filename + extension)
-	elif (cond == "post"):
-		endtime = timestamp()
-		filename = str(endtime)
-		camera.capture('/home/pi/Photos/After/' + filename + extension)
-	if (cond == "pre" or cond == "post"):
-		print "Image taken."
+	filename = str(timestamp())
+	camera.capture('/home/pi/Photos/Testing/' + filename + extension)
+	print "Image taken."
 
-
-# def end():
-# 	sessiontime = starttime - endtime
-
-def startsession():
-	print "Starting Session!"
-	sleep(1)
-	takephoto("pre")
-	sleep(5)
-
-def endsession():
-	print "Ending Session!"
-	sleep(1)
-	print "Please return the equipment to the locker and close the door."
-	sleep(3)
-	takephoto("post")
-	sleep(5)
-
-
-
-startsession()
+takephoto()
