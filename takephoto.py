@@ -19,7 +19,7 @@ def takephoto(cond):
 		starttime = timestamp()
 		filename = str(starttime)
 		camera.capture('/home/pi/Photos/Before/' + filename + extension)
-	else if (cond == "post"):
+	elif (cond == "post"):
 		endtime = timestamp()
 		filename = str(endtime)
 		camera.capture('/home/pi/Photos/After/' + filename + extension)
