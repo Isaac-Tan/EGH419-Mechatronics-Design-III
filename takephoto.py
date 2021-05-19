@@ -15,7 +15,8 @@ def timestamp():
 
 def takephoto():
 	extension = ".jpg"
-	filename = str(timestamp())
+	ts = timestamp()
+	filename = str(ts)
 	camera.capture('/home/pi/Photos/Testing/' + filename + extension)
 	print "Image taken."
 
