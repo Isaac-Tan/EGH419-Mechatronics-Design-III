@@ -23,6 +23,20 @@ def timestamp():
 	t_secs = t_parsed.strftime('%s')
 	return t_secs
 
+def takephoto(case):
+	extension = ".jpg"
+	if (case == "pre"):
+		starttime = timestamp()
+		filename = str(starttime)
+		camera.capture('/home/pi/Photos/Before/' + filename + extension)
+	else if (case == "post"):
+		endtime = timestamp()
+		filename = str(endtime)
+		camera.capture('/home/pi/Photos/After/' + filename + extension)
+	if (case == "pre" or case == "post"):
+		print "Image taken."
+
+
 # def end():
 # 	sessiontime = starttime - endtime
 
@@ -30,11 +44,7 @@ def startsession():
 	print "Starting Session!"
 	sessionActive = True
 	sleep(1)
-	starttime = timestamp()
-	filename = str(starttime)
-	extension = ".jpg"
-	camera.capture('/home/pi/Photos/Before/' + filename + extension)
-	print "Image taken."
+	takephoto("pre")
 	GPIO.output(16, 0)
 	sleep(5)
 
@@ -44,11 +54,7 @@ def endsession():
 	sleep(1)
 	print "Please return the equipment to the locker and close the door."
 	sleep(3)
-	endtime = timestamp()
-	filename = str(endtime)
-	extension = ".jpg"
-	camera.capture('/home/pi/Photos/After/' + filename + extension)
-	print "Image taken."
+	takephoto("post")
 	GPIO.output(16, 1)
 	sleep(5)
 
