@@ -8,7 +8,7 @@ GPIO.setup(24, GPIO.OUT)#LED to GPIO24
 GPIO.setup(25, GPIO.IN)#Button2 to GPIO25
 
 GPIO.output(24, 1)
-time.sleep(1)
+sleep(1)
 GPIO.output(24, 0)
 
 GPIO.cleanup()
