@@ -14,7 +14,7 @@ GPIO.setup(25, GPIO.IN)				#Button2 to GPIO25
 import datetime
 sessionActive = False
 camera = PiCamera()
-GPIO.output(16,1)
+GPIO.output(16,0)
 
 def timestamp():						#Obtains the current timestamp
 	t = datetime.datetime.now()
@@ -66,9 +66,10 @@ while True:
 		# startsession()
 		GPIO.output(16, 1)
 	else:
+		GPIO.output(16,0)
 		print ""
-	button2_state = GPIO.input(25)
-	if button2_state == True:
-		endsession()
-	else:
-		print ""
+	# button2_state = GPIO.input(25)
+	# if button2_state == True:
+	# 	# endsession()
+	# else:
+	# 	print ""
