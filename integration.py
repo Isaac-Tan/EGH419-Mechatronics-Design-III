@@ -29,7 +29,7 @@ def takephoto(case):
 		starttime = timestamp()			#Sets the start time as the current unix timestamp
 		filename = str(starttime)		#Names the photo as the timestamp
 		camera.capture('/home/pi/Photos/Before/' + filename + extension)
-	else if (case == "post"):			#If the photo is taken at the end of a session
+	elif (case == "post"):			#If the photo is taken at the end of a session
 		endtime = timestamp()			#Sets the end time as the current unix timestamp
 		filename = str(endtime)			#Names the photo as the timestamp
 		camera.capture('/home/pi/Photos/After/' + filename + extension)
