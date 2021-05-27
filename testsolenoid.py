@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(25, GPIO.OUT)#LED to GPIO24
 
 GPIO.output(25, 1)
-sleep(0.005)
+sleep(0.01)
 GPIO.output(25, 0)
 
 GPIO.cleanup()
