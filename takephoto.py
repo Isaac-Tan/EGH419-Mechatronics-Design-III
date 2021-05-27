@@ -1,4 +1,5 @@
 from picamera import PiCamera
+import time
 from time import sleep
 from dateutil.parser import parse as dp
 
@@ -19,5 +20,8 @@ def takephoto():
 	filename = str(ts)
 	camera.capture('/home/pi/Photos/Testing/' + filename + extension)
 	print "Image taken."
-
+now = time.time()
 takephoto()
+elapsed = time.time() - now
+print("Process: Take Photo")
+print("Latency: ", elapsed)
