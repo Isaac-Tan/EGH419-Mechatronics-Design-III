@@ -1,3 +1,4 @@
+import time
 from time import sleep
 import gpiozero
 import RPi.GPIO as GPIO
