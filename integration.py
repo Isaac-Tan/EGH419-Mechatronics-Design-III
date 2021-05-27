@@ -61,13 +61,14 @@ def endsession():				#Ending a session
 
 
 while True:
-	button1_state = GPIO.input(23)
-	if button1_state == True:
-		# startsession()
+	//
+	ledSwitch_state = GPIO.input(23)
+	if ledSwitch_state == True:
+		#If the door is opened
 		GPIO.output(16, 1)
 	else:
+		#If the door is closed
 		GPIO.output(16,0)
-		print ""
 	# button2_state = GPIO.input(25)
 	# if button2_state == True:
 	# 	# endsession()
