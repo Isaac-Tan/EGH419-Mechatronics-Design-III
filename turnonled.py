@@ -3,7 +3,7 @@ import gpiozero
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(16, GPIO.OUT)#LED to GPIO24
+GPIO.setup(16, GPIO.OUT)
 GPIO.setwarnings(False)
 
 while True:
