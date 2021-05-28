@@ -16,59 +16,61 @@ sessionActive = False
 camera = PiCamera()
 GPIO.output(16,0)
 
-def timestamp():						#Obtains the current timestamp
-	t = datetime.datetime.now()
+def timestamp():
+	t = datetime.datetime.now()			#Obtains the current timestamp
 	t_iso = t.isoformat()				#Converts to iso format
 	t_parsed = dp(t_iso)
-	t_secs = t_parsed.strftime('%s')	#Time in unix format
-	return t_secs
+	t_unix = t_parsed.strftime('%s')	#Time in unix format
+	return t_unix
 
 def takephoto(case):
-	extension = ".jpg"					#Sets the image extension as .jpg
-	if (case == "pre"):					#If the photo is taken at the start of a session
-		starttime = timestamp()			#Sets the start time as the current unix timestamp
-		filename = str(starttime)		#Names the photo as the timestamp
+	GPIO.output(16, 1)						#Sets the relay signal for the LED high
+	extension = ".jpg"						#Sets the image extension as .jpg
+	if (case == "start"):					#If the photo is taken at the start of a session
+		starttime = timestamp()				#Sets the start time as the current unix timestamp
+		filename = str(starttime)			#Names the photo as the timestamp
 		camera.capture('/home/pi/Photos/Before/' + filename + extension)
-	elif (case == "post"):			#If the photo is taken at the end of a session
-		endtime = timestamp()			#Sets the end time as the current unix timestamp
-		filename = str(endtime)			#Names the photo as the timestamp
+	elif (case == "end"):					#If the photo is taken at the end of a session
+		endtime = timestamp()				#Sets the end time as the current unix timestamp
+		filename = str(endtime)				#Names the photo as the timestamp
 		camera.capture('/home/pi/Photos/After/' + filename + extension)
-	if (case == "pre" or case == "post"):	#Once successfully taking a photo
-		print "Image taken."				#Print feedback
+	sleep(1)								#Allows camera to take photo
+	GPIO.output(16, 0)						#Sets the relay signal for the LED low
+
+
+	# if (case == "pre" or case == "post"):	#Once successfully taking a photo
+	# 	print "Image taken."				#Print feedback
+
+def unlock():
+	GPIO.output(25, 1)					#Set relay signal pin high
+	sleep(0.05)							#for 50ms
+	GPIO.output(25, 0)					#Set relay signal pin low
 
 
 # def end():
 # 	sessiontime = starttime - endtime
 
 def startsession():				#Starting a session
-	print "Starting Session!"
 	sessionActive = True		#Set the session as active so it cannot be started again but can be ended
-	sleep(1)
-	takephoto("pre")			#Take a photo of the interior
-	GPIO.output(16, 0)			#Unlock the solenoid
-	sleep(5)
+	takephoto("start")			#Take a photo of the interior
+	unlock()					#Unlock the solenoid lock
 
-def endsession():				#Ending a session
-	print "Ending Session!"
-	sessionActive = False		#Set the session as inactive so it cannot be ended again but can be started
-	sleep(1)
-	print "Please return the equipment to the locker and close the door."
-	sleep(3)
-	takephoto("post")			#Take a photo of the interior
-	GPIO.output(16, 1)			#Lock the solenoid
-	sleep(5)
+def endsession():						#Ending a session
+	sessionActive = False				#Set the session as inactive so it cannot be ended again but can be started
+	sessionTime = endtime - starttime
+	takephoto("end")					#Take a photo of the interior
 
 
 
-while True:
-	//
+while sessionActive:
 	ledSwitch_state = GPIO.input(23)
-	if ledSwitch_state == True:
-		#If the door is opened
-		GPIO.output(16, 1)
-	else:
-		#If the door is closed
-		GPIO.output(16,0)
+	if ledSwitch_state == True:			#If the door is opened
+		GPIO.output(16, 1)				#Set the relay signal for the LED high
+	else:								#If the door is closed
+		GPIO.output(16,0)				#Set the relay signal for the LED low
+
+
+
 	# button2_state = GPIO.input(25)
 	# if button2_state == True:
 	# 	# endsession()
