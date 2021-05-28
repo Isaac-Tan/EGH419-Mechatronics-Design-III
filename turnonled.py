@@ -10,5 +10,6 @@ while True:
 	GPIO.output(16,GPIO.HIGH)
 	sleep(2)
 	GPIO.output(16,GPIO.LOW)
+	sleep(2)
 
 GPIO.cleanup()
