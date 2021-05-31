@@ -26,18 +26,17 @@ def timestamp():
 def takephoto(case):
 	GPIO.output(16, 1)						#Sets the relay signal for the LED high
 	extension = ".jpg"						#Sets the image extension as .jpg
-	with picamera.PiCamera() as camera:
-		camera.start_preview()
-		sleep(2)
-		if (case == "start"):					#If the photo is taken at the start of a session
-			starttime = timestamp()				#Sets the start time as the current unix timestamp
-			filename = str(starttime)			#Names the photo as the timestamp
-			camera.capture('/home/pi/Photos/Before/' + filename + extension)
-		elif (case == "end"):					#If the photo is taken at the end of a session
-			endtime = timestamp()				#Sets the end time as the current unix timestamp
-			filename = str(endtime)				#Names the photo as the timestamp
-			camera.capture('/home/pi/Photos/After/' + filename + extension)
-		camera.close()
+	camera.start_preview()
+	sleep(2)
+	if (case == "start"):					#If the photo is taken at the start of a session
+		starttime = timestamp()				#Sets the start time as the current unix timestamp
+		filename = str(starttime)			#Names the photo as the timestamp
+		camera.capture('/home/pi/Photos/Before/' + filename + extension)
+	elif (case == "end"):					#If the photo is taken at the end of a session
+		endtime = timestamp()				#Sets the end time as the current unix timestamp
+		filename = str(endtime)				#Names the photo as the timestamp
+		camera.capture('/home/pi/Photos/After/' + filename + extension)
+	camera.close()
 	sleep(1)								#Allows camera to take photo
 	GPIO.output(16, 0)						#Sets the relay signal for the LED low
 
