@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+  <head> 
+     <title>GPIO Control</title> 
+     <link rel="stylesheet" href='../static/style.css'/> 
+  </head> 
+  <body> 
+		<h1>TILLocker</h1> 
+		<!-- <meta http-equiv="refresh" content="2" > -->
+		<h2> Locker status </h2> 
+		<h3> Session status :
+			{% if sessionStatus ==1 %} Running
+			{% else %} Stopped
+			{% endif %}
+		</h3> 
+		<h3> Light status :
+			{% if lightStatus ==1 %} On
+			{% else %} Off
+			{% endif %}
+		</h3> 
+		<br> 
+		<h2> Control Panel </h2> 
+		<h3> Door :  
+			{% if  switch1   == 1 %} 
+				<a href="/door/off"class="button">CLOSE</a> 
+			{% else %} 
+				<a href="/door/on" class="button">OPEN</a>  
+			{% endif %}	 
+		</h3> 
+		<h3> Light :
+			{% if  switch2   == 1 %} 
+				<a href="/light/off"class="button">OFF</a> 
+			{% else %} 
+				<a href="/light/on" class="button">ON</a>  
+			{% endif %}	
+		</h3>
+		<h3>
+			<a href = "/picture/on" class="button">TAKE PHOTO</a>
+		</h3>
+		<h2>Items Pictures :</h2>
+			<img src="../image/example1.png" alt="Name of picture" width="200" height="200">
+
+  </body> 
+</html>

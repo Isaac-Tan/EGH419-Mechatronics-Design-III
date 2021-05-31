@@ -1,0 +1,71 @@
+@import "bourbon";
+
+body {
+  background: rgb(234, 234, 238);
+  color: rgb(20, 20, 16); 
+}
+
+.wrapper {  
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);  
+  border-radius: 15px;
+}
+
+
+
+.form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+input[type="text"] {
+  margin: 0 auto;
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 12px 28px;
+  width: 100%;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 12px 28px;
+  width: 100%;
+}
+
+.button {
+  font: bold 15px Arial;
+  text-decoration: none;
+  background-color: #867d7d;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #0c0c0c;
+  border-right: 1px solid #0c0c0c;
+  border-bottom: 1px solid #080808;
+  border-left: 1px solid #1a1919;
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.button1 {
+  font-size: 16px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  background-color: #c9d5ff;
+  width: 100%;
+}
