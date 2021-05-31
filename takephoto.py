@@ -26,6 +26,7 @@ def takephoto():
 	ts = timestamp()
 	filename = str(ts)
 	camera.capture('/home/pi/Photos/Testing/' + filename + extension)
+	camera.close()
 	print "Image taken."
 	GPIO.output(16, 0)						#Sets the relay signal for the LED low
 
