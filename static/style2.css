@@ -44,7 +44,7 @@
   .glyphicon-qrcode{
     /* position: fixed; */
     text-align:center;
-    font-size: 100px;
+    font-size: 60px;
     /* left: 5%; */
     /* right:  10%;  */
     /* padding-left: 5%; */
@@ -94,6 +94,9 @@
   }
   #qrcode-btn {
     text-align: center;
-    width: 50%;
+    width: 90%;
+    position:absolute;
+    left:5%;
+    right:5%;
     bottom: 10px;
   }
