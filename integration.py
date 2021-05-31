@@ -36,7 +36,6 @@ def takephoto(case):
 		endtime = timestamp()				#Sets the end time as the current unix timestamp
 		filename = str(endtime)				#Names the photo as the timestamp
 		camera.capture('/home/pi/Photos/After/' + filename + extension)
-	camera.close()
 	sleep(1)								#Allows camera to take photo
 	GPIO.output(16, 0)						#Sets the relay signal for the LED low
 
