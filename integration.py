@@ -61,24 +61,22 @@ def startsession():				#Starting a session
 
 def endsession():						#Ending a session
 	unlock()							#Unlock the solenoid lock
+	sleep(3)
 	# checkclosed()						#Check if the door has been closed
+	doorOpenstate = GPIO.input(24)
+	while doorOpenstate == True:
+		print("close the door")
 	sessionActive = False				#Set the session as inactive so it cannot be ended again but can be started
 	sessionTime = endtime - starttime
 	takephoto("end")					#Take a photo of the interior
 
 
+takephoto("start")
+# while sessionActive:
+# 	ledSwitch_state = GPIO.input(23)
+# 	if ledSwitch_state == True:			#If the door is opened
+# 		GPIO.output(16, 1)				#Set the relay signal for the LED high
+# 	else:								#If the door is closed
+# 		GPIO.output(16,0)				#Set the relay signal for the LED low
 
-while sessionActive:
-	ledSwitch_state = GPIO.input(23)
-	if ledSwitch_state == True:			#If the door is opened
-		GPIO.output(16, 1)				#Set the relay signal for the LED high
-	else:								#If the door is closed
-		GPIO.output(16,0)				#Set the relay signal for the LED low
 
-
-
-	# button2_state = GPIO.input(25)
-	# if button2_state == True:
-	# 	# endsession()
-	# else:
-	# 	print ""
