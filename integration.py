@@ -26,14 +26,18 @@ def timestamp():
 def takephoto(case):
 	GPIO.output(16, 1)						#Sets the relay signal for the LED high
 	extension = ".jpg"						#Sets the image extension as .jpg
-	if (case == "start"):					#If the photo is taken at the start of a session
-		starttime = timestamp()				#Sets the start time as the current unix timestamp
-		filename = str(starttime)			#Names the photo as the timestamp
-		camera.capture('/home/pi/Photos/Before/' + filename + extension)
-	elif (case == "end"):					#If the photo is taken at the end of a session
-		endtime = timestamp()				#Sets the end time as the current unix timestamp
-		filename = str(endtime)				#Names the photo as the timestamp
-		camera.capture('/home/pi/Photos/After/' + filename + extension)
+	with picamera.PiCamera() as camera:
+		camera.start_preview()
+		sleep(2)
+		if (case == "start"):					#If the photo is taken at the start of a session
+			starttime = timestamp()				#Sets the start time as the current unix timestamp
+			filename = str(starttime)			#Names the photo as the timestamp
+			camera.capture('/home/pi/Photos/Before/' + filename + extension)
+		elif (case == "end"):					#If the photo is taken at the end of a session
+			endtime = timestamp()				#Sets the end time as the current unix timestamp
+			filename = str(endtime)				#Names the photo as the timestamp
+			camera.capture('/home/pi/Photos/After/' + filename + extension)
+		camera.close()
 	sleep(1)								#Allows camera to take photo
 	GPIO.output(16, 0)						#Sets the relay signal for the LED low
 
@@ -56,6 +60,8 @@ def startsession():				#Starting a session
 	unlock()					#Unlock the solenoid lock
 
 def endsession():						#Ending a session
+	unlock()							#Unlock the solenoid lock
+	# checkclosed()						#Check if the door has been closed
 	sessionActive = False				#Set the session as inactive so it cannot be ended again but can be started
 	sessionTime = endtime - starttime
 	takephoto("end")					#Take a photo of the interior
