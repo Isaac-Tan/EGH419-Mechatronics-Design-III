@@ -70,7 +70,7 @@ def endsession():						#Ending a session
 	takephoto("end")					#Take a photo of the interior
 
 
-takephoto("start")
+# takephoto("start")
 # while sessionActive:
 # 	ledSwitch_state = GPIO.input(23)
 # 	if ledSwitch_state == True:			#If the door is opened
