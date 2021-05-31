@@ -187,6 +187,7 @@ def index():
 @app.route("/<url>")
 def webpage(url):
 	if url == "home.html":
+		it.takephoto()
 		return render_template('home.html')
 	elif url == "checkin.html":
 		doorSts = GPIO.input(doorPIN)
