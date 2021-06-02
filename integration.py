@@ -6,9 +6,10 @@ from dateutil.parser import parse as dp
 
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(23, GPIO.IN)				#Button1 to GPIO23
+GPIO.setup(23, GPIO.IN)				#LED switch to GPIO23
+GPIO.setup(24, GPIO.IN)				#Locked state switch to GPIO16
+GPIO.setup(25, GPIO.OUT)			#Solenoid lock to GPIO25
 GPIO.setup(16, GPIO.OUT)			#LED to GPIO16
-GPIO.setup(25, GPIO.IN)				#Button2 to GPIO25
 
 
 import datetime
@@ -40,17 +41,12 @@ def takephoto(case):
 	GPIO.output(16, 0)						#Sets the relay signal for the LED low
 
 
-	# if (case == "pre" or case == "post"):	#Once successfully taking a photo
-	# 	print "Image taken."				#Print feedback
-
 def unlock():
 	GPIO.output(25, 1)					#Set relay signal pin high
 	sleep(0.05)							#for 50ms
 	GPIO.output(25, 0)					#Set relay signal pin low
 
 
-# def end():
-# 	sessiontime = starttime - endtime
 
 def startsession():				#Starting a session
 	sessionActive = True		#Set the session as active so it cannot be started again but can be ended
@@ -65,16 +61,16 @@ def endsession():						#Ending a session
 	while doorOpenstate == True:
 		print("close the door")
 	sessionActive = False				#Set the session as inactive so it cannot be ended again but can be started
-	sessionTime = endtime - starttime
 	takephoto("end")					#Take a photo of the interior
+
+def led_callback(channel):
+	if GPIO.input(23):					#If the door is opened
+		GPIO.output(16, 1)				#Set the relay signal for the LED high
+	else:								#If the door is closed
+		GPIO.output(16,0)				#Set the relay signal for the LED low
+
+
+GPIO.add_event_detect(23,GPIO.BOTH,callback=led_callback) # Setup event on pin 23 rising edge
 
 
 # takephoto("start")
-# while sessionActive:
-# 	ledSwitch_state = GPIO.input(23)
-# 	if ledSwitch_state == True:			#If the door is opened
-# 		GPIO.output(16, 1)				#Set the relay signal for the LED high
-# 	else:								#If the door is closed
-# 		GPIO.output(16,0)				#Set the relay signal for the LED low
-
-
