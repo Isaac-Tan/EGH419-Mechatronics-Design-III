@@ -24,12 +24,18 @@ qrcode.callback = res => {
       track.stop();
     });
 
-    qrResult.hidden = false;
+    qrResult.hidden = true;
     canvasElement.hidden = true;
 
     btnScanQR.hidden = false;
     // window.location.href = outputData.innerText;
-    window.location.href = "../selectionpage.html";  
+    if (outputData.innerText == "https://stomachic-jaguar-5609.dataplicity.io/selectionpage.html"){
+      window.location.href = "../selectionpage.html";  
+    }
+    else{
+      outputData.innerText = "This is not a valid TILL QR code. To unlock a TILL locker please scan the QR code on the onsight locker";
+      qrResult.hidden = false;
+    } 
   }
 };
 

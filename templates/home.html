@@ -29,15 +29,13 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <form class="navbar-form navbar-left" action="/action_page.php">
-            </form>
             <li class="active"><a href="home.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="selectionpage.html">Product availability</a></li>
           </ul>
           
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Sign Up / <span class="glyphicon glyphicon-log-in"></span> Login</a></li>          </ul>
+            <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Sign Out <span class="glyphicon glyphicon-log-in"></span></a></li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -47,18 +45,19 @@
 
     
       <div class="row" style=padding-top:50px>
-        <!-- <button id="dropdown-btn" onclick="dropDownFunction()" class="btn btn-primary btn-block" ><span class="glyphicon glyphicon-map-marker"></span> Location   <span class="caret"</span></button> -->
+        <button id="dropdown-btn" onclick="dropDownFunction()" class="btn btn-primary btn-block" ><span class="glyphicon glyphicon-map-marker"></span> Location   <span class="caret"</span></button>
         
           <div id="myMap" style=background-color:whitesmoke>
           <span class="glyphicon glyphicon-map-marker"></span> Location
-          <img class = "image-responsive" src={{ url_for('static', filename='map_example.png') }} class="img-rounded"  width="90%" height="90%" >
+          <img class = "image-responsive" src={{ url_for('static', filename='whiteshillmap.png') }} class="img-rounded"  width="90%" height="90%" >
         </div>
+        <img class = "image-responsive" src={{ url_for('static', filename='whiteshillmap.png') }} class="img-rounded"  width="90%" height="90%" >
       </div>
           </div>
      <canvas hidden="" id="qr-canvas"></canvas>
 
       <div id="qr-result" hidden="">
-        <b>Data:</b> <span id="outputData"></span>
+        <span id="outputData"></span>
       </div>
     </div>
       <a id = "qrcode-btn"class="btn btn-warning"><span class="glyphicon glyphicon-qrcode" ></span>

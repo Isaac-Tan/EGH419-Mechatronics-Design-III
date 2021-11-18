@@ -43,8 +43,8 @@
   /* Glyphicon */
   .glyphicon-qrcode{
     /* position: fixed; */
-    text-align:center;
-    font-size: 60px;
+    text-align:left;
+    font-size: 50px;
     /* left: 5%; */
     /* right:  10%;  */
     /* padding-left: 5%; */
@@ -80,7 +80,7 @@
 
   }
   #about {padding-top:50px;color: rgb(14, 13, 13); background-color: #ffffff;}
-  #lockercontrol {padding-top:60px;color: rgb(14, 13, 13); background-color: #ffffff;}
+  #lockercontrol {padding-top:5px;color: rgb(14, 13, 13); background-color: #ffffff;}
   .bg-grey {
     background-color: #f6f6f6;
   }
@@ -99,4 +99,9 @@
     left:5%;
     right:5%;
     bottom: 10px;
+  }
+
+  #myMap {
+    display: none;
+    background-color: whitesmoke;
   }
