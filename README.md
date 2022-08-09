@@ -1,4 +1,4 @@
-# EGH419 Communal Locker System
+# EGH419 - Mechatronics Design III: Communal Locker System
 
 ## Project Aim
 This project proposes the implementation of a locally available, contactless sports equipment rental system.
